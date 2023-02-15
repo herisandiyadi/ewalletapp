@@ -1,4 +1,5 @@
 import 'package:ewallet_app/cubit/balance/balance_cubit.dart';
+import 'package:ewallet_app/cubit/profile/profile_cubit.dart';
 import 'package:ewallet_app/ui/amount/amount_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,23 +16,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? firstNm;
-  String? lastNm;
-
-  void fullNm() async {
-    var storage = const FlutterSecureStorage();
-    final first = await storage.read(
-      key: 'firstNm',
-      aOptions: const AndroidOptions(),
-    );
-    final last = await storage.read(
-      key: 'lastNm',
-      aOptions: const AndroidOptions(),
-    );
-    setState(() {
-      firstNm = first;
-      lastNm = last;
-    });
+  void fullNm() {
+    context.read<ProfileCubit>().getProfile();
   }
 
   void cekSaldo() {
@@ -64,10 +50,22 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 2,
                 ),
-                Text(
-                  '$firstNm $lastNm',
-                  style: blackTextStyle.copyWith(
-                      fontSize: 20, fontWeight: semiBold),
+                BlocBuilder<ProfileCubit, ProfileState>(
+                  builder: (context, state) {
+                    if (state is ProfileLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    if (state is ProfileLoaded) {
+                      return Text(
+                        '${state.profileResponse.data.firstName} ${state.profileResponse.data.lastName} ',
+                        style: blackTextStyle.copyWith(
+                            fontSize: 20, fontWeight: semiBold),
+                      );
+                    }
+                    return const Text('');
+                  },
                 ),
               ],
             ),

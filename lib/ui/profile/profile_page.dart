@@ -150,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       if (state is LoginInitial) {
                         LoadingWidget(context).loading(false);
                         Navigator.pushNamedAndRemoveUntil(
-                            context, '/', (route) => false);
+                            context, '/login', (route) => false);
                       }
                     },
                     child: Container(

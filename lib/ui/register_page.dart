@@ -50,7 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 DialogButton(
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, '/', (route) => false);
+                        context, '/login', (route) => false);
                   },
                   width: 120,
                   child: const Text(
@@ -204,7 +204,7 @@ class _RegisterPageState extends State<RegisterPage> {
             TextButton(
               onPressed: () {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, '/', (route) => false);
+                    context, '/login', (route) => false);
               },
               child: Text(
                 'Sign In',

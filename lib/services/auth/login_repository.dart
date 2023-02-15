@@ -25,16 +25,6 @@ class LoginRepository implements LoginRepositoryImpl {
         value: json.data.token,
         aOptions: const AndroidOptions(),
       );
-      await storage.write(
-        key: 'firstNm',
-        value: json.data.firstName,
-        aOptions: const AndroidOptions(),
-      );
-      await storage.write(
-        key: 'lastNm',
-        value: json.data.lastName,
-        aOptions: const AndroidOptions(),
-      );
 
       return json;
     }

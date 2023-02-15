@@ -14,6 +14,7 @@ import 'package:ewallet_app/ui/home/home.dart';
 import 'package:ewallet_app/ui/home/homepage.dart';
 import 'package:ewallet_app/ui/loginpage.dart';
 import 'package:ewallet_app/ui/register_page.dart';
+import 'package:ewallet_app/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -55,7 +56,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         routes: {
-          '/': (context) => const LoginPage(),
+          '/': (context) => const SplashScreen(),
+          '/login': (context) => const LoginPage(),
           '/register': (context) => const RegisterPage(),
           '/home': (context) => const Home(),
           '/homepage': (context) => const HomePage(),

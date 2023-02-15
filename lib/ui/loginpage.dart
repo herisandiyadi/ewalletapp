@@ -111,18 +111,6 @@ class _LoginPageState extends State<LoginPage> {
                           hintStyle: const TextStyle(color: softGreyColor)),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 22),
-                    child: Row(
-                      children: [
-                        const Spacer(),
-                        Text(
-                          'Forgot Password',
-                          style: blueTextStyle.copyWith(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ),
                   const SizedBox(
                     height: 30,
                   ),
