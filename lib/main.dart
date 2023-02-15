@@ -17,6 +17,7 @@ import 'package:ewallet_app/ui/register_page.dart';
 import 'package:ewallet_app/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,41 +29,48 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => RegisterCubit(RegistrationRepository()),
-        ),
-        BlocProvider(
-          create: (context) => LoginCubit(LoginRepository()),
-        ),
-        BlocProvider(
-          create: (context) => BalanceCubit(BalanceRepository()),
-        ),
-        BlocProvider(
-          create: (context) => TransactionCubit(TransactionRepository()),
-        ),
-        BlocProvider(
-          create: (context) => HistoryCubit(HistoryRepository()),
-        ),
-        BlocProvider(
-          create: (context) => ProfileCubit(ProfileRepository()),
-        )
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'E Wallet App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        routes: {
-          '/': (context) => const SplashScreen(),
-          '/login': (context) => const LoginPage(),
-          '/register': (context) => const RegisterPage(),
-          '/home': (context) => const Home(),
-          '/homepage': (context) => const HomePage(),
-        },
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => RegisterCubit(RegistrationRepository()),
+            ),
+            BlocProvider(
+              create: (context) => LoginCubit(LoginRepository()),
+            ),
+            BlocProvider(
+              create: (context) => BalanceCubit(BalanceRepository()),
+            ),
+            BlocProvider(
+              create: (context) => TransactionCubit(TransactionRepository()),
+            ),
+            BlocProvider(
+              create: (context) => HistoryCubit(HistoryRepository()),
+            ),
+            BlocProvider(
+              create: (context) => ProfileCubit(ProfileRepository()),
+            )
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'E Wallet App',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            routes: {
+              '/': (context) => const SplashScreen(),
+              '/login': (context) => const LoginPage(),
+              '/register': (context) => const RegisterPage(),
+              '/home': (context) => const Home(),
+              '/homepage': (context) => const HomePage(),
+            },
+          ),
+        );
+      },
     );
   }
 }

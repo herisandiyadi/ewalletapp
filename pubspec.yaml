@@ -35,12 +35,14 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.2
   flutter_launcher_icons: ^0.11.0
+  flutter_screenutil: ^5.6.1
   flutter_secure_storage: ^8.0.0
   google_fonts: ^4.0.3
   http: ^0.13.5
   intl: ^0.18.0
   loading_indicator: ^3.1.0
   rflutter_alert: ^2.0.4
+  screen_utils: ^0.0.1
   sqlite3: ^1.9.1
 
 dev_dependencies:
