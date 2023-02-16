@@ -22,9 +22,10 @@ class _EditProfileState extends State<EditProfile> {
     return BlocListener<ProfileCubit, ProfileState>(
       listener: (context, state) {
         if (state is ProfileLoading) {
-          LoadingWidget(context).loading(true);
+          const Center(
+            child: CircularProgressIndicator(),
+          );
         } else if (state is UpdateProfileLoaded) {
-          LoadingWidget(context).loading(false);
           Alert(
             context: context,
             type: AlertType.success,
@@ -33,6 +34,7 @@ class _EditProfileState extends State<EditProfile> {
             buttons: [
               DialogButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   Navigator.pushNamedAndRemoveUntil(
                       context, '/home', (route) => false);
                 },
@@ -45,7 +47,6 @@ class _EditProfileState extends State<EditProfile> {
             ],
           ).show();
         } else if (state is ProfileFailed) {
-          LoadingWidget(context).loading(false);
           Alert(
             context: context,
             type: AlertType.error,
